@@ -31,13 +31,10 @@ const goToLogin = () => {
 <template>
   <q-layout view="hHh lpR fFf">
 
-    <q-header elevated class="bg-primary text-white">
+    <q-header elevated class="text-white bg-primary">
       <q-toolbar>
         <q-toolbar-title>
-          <q-avatar>
-            <application-logo />
-          </q-avatar>
-          Title
+          OpenDocs
         </q-toolbar-title>
 
         <q-btn outline @click="submitLogout" v-if="auth">Logout</q-btn>

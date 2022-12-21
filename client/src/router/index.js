@@ -2,13 +2,14 @@ import { createWebHistory, createRouter } from 'vue-router'
 import { useUsers } from '@/stores/user'
 import Welcome from '../pages/WelcomePage.vue'
 import PageNotFound from '@/pages/errors/404.vue'
-import Dashboard from '@/pages/Dashboard.vue'
+
 
 import RegisterForm from '../pages/auth/RegisterForm.vue'
 import ForgotPassword from '@/pages/auth/ForgotPassword.vue'
 import ResetPassword from '@/pages/auth/ResetPassword.vue'
 import VerifyEmail from '@/pages/auth/VerifyEmail.vue'
 import LoginForm from '../pages/auth/LoginForm.vue'
+import DashboardPage from '../pages/DashboardPage.vue'
 
 const APP_NAME = import.meta.env.VITE_APP_NAME
 
@@ -24,7 +25,7 @@ const routes = [
   {
     path: '/home',
     redirect: '/dashboard',
-    component: Dashboard,
+    component: DashboardPage,
     query: {
       verified: 'verified',
     },
@@ -35,7 +36,7 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: Dashboard,
+    component: DashboardPage,
     meta: {
       title: 'Dashboard',
       guard: 'auth',
