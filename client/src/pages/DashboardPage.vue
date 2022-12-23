@@ -2,9 +2,7 @@
 import MainLayout from '../layouts/MainLayout.vue';
 import { ref } from 'vue'
 import axios from '../lib/axios';
-import moment from 'moment';
-import 'moment/dist/locale/ru';
-moment.locale('ru')
+import moment from '../lib/moment';
 
 
 
@@ -35,9 +33,8 @@ const columns = [
   <main-layout>
     <q-page ref="page">
 
-      <q-table class="absolute-full q-pa-md" title="Замечания" :rows="issues"
-        :columns="columns" :pagination="{ rowsPerPage: 20 }"
-        :rows-per-page-options="[20, 50]" row-key="name" virtual-scroll />
+      <q-table class="absolute-full q-pa-md" title="Замечания" :rows="issues" :columns="columns"
+        :pagination="{ rowsPerPage: 20 }" :rows-per-page-options="[20, 50]" row-key="name" virtual-scroll />
 
 
     </q-page>
