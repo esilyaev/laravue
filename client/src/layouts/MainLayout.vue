@@ -1,7 +1,6 @@
 <script setup>
 import { onBeforeMount } from 'vue'
 import { useUsers } from '@/stores/user'
-import ApplicationLogo from '@/components/ApplicationLogo.vue'
 import { useRouter } from 'vue-router';
 
 
