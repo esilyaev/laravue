@@ -1,20 +1,17 @@
 <script setup>
-import MainLayout from '../layouts/MainLayout.vue';
-import { ref } from 'vue'
-import axios from '../lib/axios';
+import { ref, onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
+
 import moment from '../lib/moment';
+import { useIssueStore } from '../stores/issue';
+import MainLayout from '../layouts/MainLayout.vue';
 
+const issueStore = useIssueStore()
+const { issues, isLoading } = storeToRefs(issueStore)
 
-
-const issues = ref([])
-
-axios.get('api/issue').then(
-  (data) => {
-    issues.value = [...data.data]
-  }
-)
-
-const page = ref(null)
+onMounted(() => {
+  issueStore.fetchIssues()
+})
 
 const columns = [
   { name: 'id', label: '#', field: 'id' },
@@ -23,17 +20,13 @@ const columns = [
   { name: 'created_at', label: 'Создано', field: (item) => moment(item.created_at).format('ll') },
 ]
 
-// onMounted(() => {
-//   dom.height(page)
-// })
 
 </script>
 
 <template>
   <main-layout>
     <q-page ref="page">
-
-      <q-table class="absolute-full q-pa-md" title="Замечания" :rows="issues" :columns="columns"
+      <q-table :loading="isLoading" class="absolute-full q-pa-md" title="Замечания" :rows="issues" :columns="columns"
         :pagination="{ rowsPerPage: 20 }" :rows-per-page-options="[20, 50]" row-key="name" virtual-scroll />
 
 

@@ -1,4 +1,4 @@
-import axios from '@/lib/axios'
+import axios from '../lib/axios'
 import { useStorage } from '@vueuse/core'
 import { defineStore, acceptHMRUpdate } from 'pinia'
 
