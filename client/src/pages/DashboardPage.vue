@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 
 import moment from '../lib/moment';
@@ -25,7 +25,7 @@ const columns = [
 
 <template>
   <main-layout>
-    <q-page ref="page">
+    <q-page>
       <q-table :loading="isLoading" class="absolute-full q-pa-md" title="Замечания" :rows="issues" :columns="columns"
         :pagination="{ rowsPerPage: 20 }" :rows-per-page-options="[20, 50]" row-key="name" virtual-scroll />
 
